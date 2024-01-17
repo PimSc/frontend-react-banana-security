@@ -1,0 +1,40 @@
+import React, { createContext, useState } from 'react';
+
+const AuthContext = createContext();
+
+export const AuthProvider = ({ children }) => {
+  // Hier implementeren we onze auth logica
+  const [isAuthenticated, setAuthenticated] = useState(false);
+
+  function logOut() {
+    setAuthenticated(false);
+    console.log("Uitgelogd");
+  }
+
+  function logIn() {
+    setAuthenticated(true);
+    console.log("Gebruiker is ingelogd!");
+    // Hier voeg je de logica toe om de gebruiker door te sturen naar de profielpagina
+    // Bijvoorbeeld, gebruik de useNavigate hook als je React Router gebruikt
+    // import { useNavigate } from 'react-router-dom';
+    // const navigate = useNavigate();
+    // navigate('/profielpagina');
+  }
+
+  // Dit is ons data object met de nieuwe isAuthenticated
+  const data = {
+    username: 'username',
+    LogIn: logIn,
+    LogOut: logOut,
+    isAuthenticated: isAuthenticated,
+  };
+
+  // Dit sturen we mee via de provider
+  return (
+    <AuthContext.Provider value={data}>
+      {children}
+    </AuthContext.Provider>
+  );
+};
+
+export default AuthContext;
