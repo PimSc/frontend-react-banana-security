@@ -1,11 +1,12 @@
 import logo from '../assets/banana-01.png';
-import { useNavigate, Link } from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import AuthContext from "./../context/AuthContext";
-import React, { useEffect, useState, useContext } from 'react';
+import React, {useContext} from 'react';
 
 function NavBar() {
   const navigate = useNavigate();
-  const { LogIn, LogOut, isAuth, username } = useContext(AuthContext);
+  const { LogOut, isAuth } = useContext(AuthContext);
+    const authContext = useContext(AuthContext);
 
   return (
       <nav>
@@ -17,36 +18,36 @@ function NavBar() {
         </Link>
 
         <div>
-          {!isAuth ? (
+            {!isAuth ? (<>
+                    {/*De inhoud van deze !isAuth is alleen zichtbaar als de gebruiker is ingelogd.*/}
+                    <button
+                        type="button"
+                        onClick={() => navigate('/signin')}
+                    >
+                        Log in
+                    </button>
               <button
                   type="button"
-                  onClick={() => {
-                    LogIn();
-                    console.log(isAuth)
-                  }}
+                  onClick={() => navigate('/signup')}
               >
-                Log in
+                  Registreren
               </button>
+                </>
           ) : (
               <>
-                <span>Welkom, {username}!</span>
+                  {/*De inhoud van deze !isAuth is alleen zichtbaar als de gebruiker is uitgelogd.*/}
+                <span>Welkom, {authContext.user}!</span>
                 <button
                     type="button"
                     onClick={() => {
                       LogOut();
-                      console.log(isAuth)
                     }}
                 >
                   Uitloggen
                 </button>
               </>
           )}
-          <button
-              type="button"
-              onClick={() => navigate('/signup')}
-          >
-            Registreren
-          </button>
+
         </div>
       </nav>
   );
