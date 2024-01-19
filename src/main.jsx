@@ -24,6 +24,3 @@ ReactDOM.render(
 reportWebVitals();
 
 
-// <LanguageContext.Provider value={{ activeLanguage: 'nederlands' }}>
-//     <App />
-// </LanguageContext.Provider>

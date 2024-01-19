@@ -5,7 +5,6 @@ const AuthContext = createContext({});
 
 export const AuthProvider = ({children}) => {
     // HIER IMPLEMENTEREN WE ONZE AUTH LOGICA
-    // const [isAuth, toggleIsAuth] = useState(false);
     const navigate = useNavigate();
     const [authState, setAuthState] = useState({ isAuth: false, user: '' });
 
