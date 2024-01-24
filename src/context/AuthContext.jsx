@@ -33,8 +33,6 @@ export const AuthProvider = ({children}) => {
         LogOut: logOut,
         isAuth: authState.isAuth,
         user: authState.user,
-        // username: 'Reza',
-        // isAuth: isAuth,
     };
 
     //DIT STUREN WE MEE VIA DE PROVIDER
