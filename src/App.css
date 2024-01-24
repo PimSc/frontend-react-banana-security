@@ -11,7 +11,9 @@ button {
   background-color: #f5ab00;
   color: white;
   font-weight: bold;
+
 }
+
 
 /*Zorgt ervoor dat als twee buttons naast elkaar staan, er altijd ruimte tussen blijft*/
 button + button {
